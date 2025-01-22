@@ -25,8 +25,12 @@
                     },
                     body: JSON.stringify({
                         api_key: apiKey,
-                        format: 'json'
+                        format: 'json',
+                        custom_uptime_ratios: '30', // Für die letzten 30 Tage
+                        logs: 1,                   // Logs einschalten
+                        all_time_uptime_ratio: 1   // Gesamte Uptime anzeigen
                     })
+
                 });
 
                 if (!response.ok) {
