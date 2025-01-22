@@ -13,64 +13,54 @@
         <div id="uptime" class="text-4xl font-extrabold mb-4">Loading...</div>
         <p class="text-gray-400 mb-6">Uptime for the last 30 days</p>
 
-        <!-- Hauptserver Info -->
-        <div class="mb-4">
-            <button id="mainserver-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex items-center justify-between">
+        <!-- Hauptserver Uptime -->
+        <div>
+            <button id="mainserver-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex justify-between">
                 <span class="text-lg font-semibold">Hauptserver</span>
                 <span id="mainserver-uptime" class="text-gray-400">Loading...</span>
-                <svg id="mainserver-arrow" class="w-6 h-6 transform rotate-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
             </button>
-            <div id="mainserver-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                <p class="text-gray-400">Uptime: <span id="mainserver-uptime-value">Loading...</span>%</p>
-            </div>
-        </div>
+            
+            <!-- Unterserver, die beim Ausklappen des Hauptservers angezeigt werden -->
+            <div id="mainserver-info" class="hidden mt-2">
+                <!-- Unterserver 1 -->
+                <div class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 flex justify-between mb-2">
+                    <span class="text-lg font-semibold">Unterserver 1</span>
+                    <span id="subserver1-uptime" class="text-gray-400">Loading...</span>
+                </div>
 
-        <!-- Unterserver 1 -->
-        <div class="mb-4">
-            <button id="subserver1-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex items-center justify-between">
-                <span class="text-lg font-semibold">Unterserver 1</span>
-                <span id="subserver1-uptime" class="text-gray-400">Loading...</span>
-                <svg class="w-6 h-6 transform rotate-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </button>
-            <div id="subserver1-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                <p class="text-gray-400">Uptime: <span id="subserver1-uptime-value">Loading...</span>%</p>
-            </div>
-        </div>
+                <!-- Unterserver 2 -->
+                <div class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 flex justify-between mb-2">
+                    <span class="text-lg font-semibold">Unterserver 2</span>
+                    <span id="subserver2-uptime" class="text-gray-400">Loading...</span>
+                </div>
 
-        <!-- Unterserver 2 -->
-        <div class="mb-4">
-            <button id="subserver2-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex items-center justify-between">
-                <span class="text-lg font-semibold">Unterserver 2</span>
-                <span id="subserver2-uptime" class="text-gray-400">Loading...</span>
-                <svg class="w-6 h-6 transform rotate-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </button>
-            <div id="subserver2-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                <p class="text-gray-400">Uptime: <span id="subserver2-uptime-value">Loading...</span>%</p>
-            </div>
-        </div>
-
-        <!-- Unterserver 3 -->
-        <div class="mb-4">
-            <button id="subserver3-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex items-center justify-between">
-                <span class="text-lg font-semibold">Unterserver 3</span>
-                <span id="subserver3-uptime" class="text-gray-400">Loading...</span>
-                <svg class="w-6 h-6 transform rotate-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </button>
-            <div id="subserver3-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                <p class="text-gray-400">Uptime: <span id="subserver3-uptime-value">Loading...</span>%</p>
+                <!-- Unterserver 3 -->
+                <div class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 flex justify-between">
+                    <span class="text-lg font-semibold">Unterserver 3</span>
+                    <span id="subserver3-uptime" class="text-gray-400">Loading...</span>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
+        // Funktion zum Umschalten der Sichtbarkeit
+        function toggleVisibility(elementId) {
+            const element = document.getElementById(elementId);
+            const isVisible = !element.classList.contains('hidden');
+            if (isVisible) {
+                element.classList.add('hidden');
+            } else {
+                element.classList.remove('hidden');
+            }
+        }
+
+        // Event Listener für das Umschalten der Hauptserver-Info
+        document.getElementById('mainserver-toggle').addEventListener('click', () => {
+            toggleVisibility('mainserver-info');
+        });
+
+        // Uptime-Daten holen
         async function fetchUptime() {
             try {
                 // UptimeRobot API-Aufruf
@@ -98,59 +88,30 @@
                 // Hauptserver Uptime
                 const mainserver = data.monitors[0]; // Nimmt den ersten Monitor (Hauptserver)
                 const mainserverUptime = mainserver.custom_uptime_ratio || 'N/A';
-                document.getElementById('mainserver-uptime-value').textContent = `${mainserverUptime}%`;
+                document.getElementById('mainserver-uptime').textContent = `${mainserverUptime}%`;
 
                 // Unterserver Uptime
                 const subserver1 = data.monitors[1] || {};
                 const subserver2 = data.monitors[2] || {};
                 const subserver3 = data.monitors[3] || {};
 
-                document.getElementById('subserver1-uptime-value').textContent = `${subserver1.custom_uptime_ratio || 'N/A'}%`;
-                document.getElementById('subserver2-uptime-value').textContent = `${subserver2.custom_uptime_ratio || 'N/A'}%`;
-                document.getElementById('subserver3-uptime-value').textContent = `${subserver3.custom_uptime_ratio || 'N/A'}%`;
+                document.getElementById('subserver1-uptime').textContent = `${subserver1.custom_uptime_ratio || 'N/A'}%`;
+                document.getElementById('subserver2-uptime').textContent = `${subserver2.custom_uptime_ratio || 'N/A'}%`;
+                document.getElementById('subserver3-uptime').textContent = `${subserver3.custom_uptime_ratio || 'N/A'}%`;
 
             } catch (error) {
                 console.error('Error fetching uptime:', error);
                 document.getElementById('uptime').textContent = 'Error fetching data';
-                document.getElementById('mainserver-uptime-value').textContent = 'Error';
-                document.getElementById('subserver1-uptime-value').textContent = 'Error';
-                document.getElementById('subserver2-uptime-value').textContent = 'Error';
-                document.getElementById('subserver3-uptime-value').textContent = 'Error';
+                document.getElementById('mainserver-uptime').textContent = 'Error';
+                document.getElementById('subserver1-uptime').textContent = 'Error';
+                document.getElementById('subserver2-uptime').textContent = 'Error';
+                document.getElementById('subserver3-uptime').textContent = 'Error';
             }
         }
 
         // Hole die Uptime-Daten beim Laden der Seite
         fetchUptime();
-
-        // Funktion zum Umschalten der Sichtbarkeit von Server-Infos
-        function toggleVisibility(elementId, arrowId) {
-            const element = document.getElementById(elementId);
-            const arrow = document.getElementById(arrowId);
-            const isVisible = !element.classList.contains('hidden');
-            if (isVisible) {
-                element.classList.add('hidden');
-                arrow.classList.remove('rotate-180');
-            } else {
-                element.classList.remove('hidden');
-                arrow.classList.add('rotate-180');
-            }
-        }
-
-        // Event Listener für das Umschalten der Hauptserver-Info
-        document.getElementById('mainserver-toggle').addEventListener('click', () => {
-            toggleVisibility('mainserver-info', 'mainserver-arrow');
-        });
-
-        // Event Listener für das Umschalten der Unterserver-Infos
-        document.getElementById('subserver1-toggle').addEventListener('click', () => {
-            toggleVisibility('subserver1-info', 'subserver1-arrow');
-        });
-        document.getElementById('subserver2-toggle').addEventListener('click', () => {
-            toggleVisibility('subserver2-info', 'subserver2-arrow');
-        });
-        document.getElementById('subserver3-toggle').addEventListener('click', () => {
-            toggleVisibility('subserver3-info', 'subserver3-arrow');
-        });
     </script>
 </body>
 </html>
+
