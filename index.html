@@ -41,7 +41,7 @@
                 const monitor = data.monitors[0]; // Nimmt den ersten Monitor aus der Liste
 
                 // Update der Anzeige
-                const uptimePercentage = monitor.average_response_time || 'N/A';
+                const uptimePercentage = monitor.custom_uptime_ratio || 'N/A';
                 document.getElementById('uptime').textContent = `${uptimePercentage}%`;
             } catch (error) {
                 console.error('Error fetching uptime:', error);
