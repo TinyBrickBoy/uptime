@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uptime Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-900 text-white">
+    <div class="text-center bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-4">Website/Minecraft Server Uptime</h1>
+        <div id="uptime" class="text-4xl font-extrabold mb-4">Loading...</div>
+        <p class="text-gray-400">Uptime for the last 30 days</p>
+    </div>
+
+    <script>
+        async function fetchUptime() {
+            try {
+                // UptimeRobot API-Aufruf
+                const apiKey = 'ur2071712-0a1e154ed2821db8f64633e0'; // Ersetze dies mit deinem UptimeRobot API-Schlüssel
+                const response = await fetch(`https://api.uptimerobot.com/v2/getMonitors`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        api_key: apiKey,
+                        format: 'json'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch uptime data');
+                }
+
+                const data = await response.json();
+                const monitor = data.monitors[0]; // Nimmt den ersten Monitor aus der Liste
+
+                // Update der Anzeige
+                const uptimePercentage = monitor.average_response_time || 'N/A';
+                document.getElementById('uptime').textContent = `${uptimePercentage}%`;
+            } catch (error) {
+                console.error('Error fetching uptime:', error);
+                document.getElementById('uptime').textContent = 'Error fetching data';
+            }
+        }
+
+        // Hole die Uptime-Daten beim Laden der Seite
+        fetchUptime();
+    </script>
+</body>
+</html>
