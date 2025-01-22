@@ -21,7 +21,7 @@
                 </svg>
             </button>
             <div id="mainserver-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                <p class="text-gray-400">Details zum Hauptserver...</p>
+                <p id="mainserver-uptime" class="text-gray-400">Loading...</p>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                     </svg>
                 </button>
                 <div id="subserver1-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                    <p class="text-gray-400">Details zu Unterserver 1...</p>
+                    <p id="subserver1-uptime" class="text-gray-400">Loading...</p>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@
                     </svg>
                 </button>
                 <div id="subserver2-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                    <p class="text-gray-400">Details zu Unterserver 2...</p>
+                    <p id="subserver2-uptime" class="text-gray-400">Loading...</p>
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                     </svg>
                 </button>
                 <div id="subserver3-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                    <p class="text-gray-400">Details zu Unterserver 3...</p>
+                    <p id="subserver3-uptime" class="text-gray-400">Loading...</p>
                 </div>
             </div>
         </div>
@@ -89,14 +89,28 @@
                 }
 
                 const data = await response.json();
-                const monitor = data.monitors[0]; // Nimmt den ersten Monitor aus der Liste
 
-                // Update der Anzeige
-                const uptimePercentage = monitor.custom_uptime_ratio || 'N/A';
-                document.getElementById('uptime').textContent = `${uptimePercentage}%`;
+                // Hauptserver Uptime
+                const mainserver = data.monitors[0]; // Nimmt den ersten Monitor (Hauptserver)
+                const mainserverUptime = mainserver.custom_uptime_ratio || 'N/A';
+                document.getElementById('mainserver-uptime').textContent = `${mainserverUptime}%`;
+
+                // Unterserver Uptime
+                const subserver1 = data.monitors[1] || {};
+                const subserver2 = data.monitors[2] || {};
+                const subserver3 = data.monitors[3] || {};
+
+                document.getElementById('subserver1-uptime').textContent = `${subserver1.custom_uptime_ratio || 'N/A'}%`;
+                document.getElementById('subserver2-uptime').textContent = `${subserver2.custom_uptime_ratio || 'N/A'}%`;
+                document.getElementById('subserver3-uptime').textContent = `${subserver3.custom_uptime_ratio || 'N/A'}%`;
+
             } catch (error) {
                 console.error('Error fetching uptime:', error);
                 document.getElementById('uptime').textContent = 'Error fetching data';
+                document.getElementById('mainserver-uptime').textContent = 'Error';
+                document.getElementById('subserver1-uptime').textContent = 'Error';
+                document.getElementById('subserver2-uptime').textContent = 'Error';
+                document.getElementById('subserver3-uptime').textContent = 'Error';
             }
         }
 
