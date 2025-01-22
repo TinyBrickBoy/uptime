@@ -1,43 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uptime Page</title>
+    <title>Uptime Status - Server</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white">
 
-    <div class="text-center bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg mx-auto mt-10">
-        <h1 class="text-2xl font-bold mb-4">Website/Minecraft Server Uptime</h1>
-        <div id="uptime" class="text-4xl font-extrabold mb-4">Loading...</div>
-        <p class="text-gray-400 mb-6">Uptime for the last 30 days</p>
-
-        <!-- Hauptserver Uptime -->
-        <div>
-            <button id="mainserver-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex justify-between">
-                <span class="text-lg font-semibold">Hauptserver</span>
-                <span id="mainserver-uptime" class="text-gray-400">Loading...</span>
-            </button>
+    <!-- Hauptcontainer für die Seite -->
+    <div class="max-w-4xl mx-auto mt-10 px-6 py-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold text-center mb-6 text-teal-400">Minecraft Server Uptime</h1>
+            <p class="text-center text-lg text-gray-400 mb-6">Uptime der letzten 30 Tage</p>
             
-            <!-- Unterserver, die beim Ausklappen des Hauptservers angezeigt werden -->
-            <div id="mainserver-info" class="hidden mt-2">
-                <!-- Unterserver 1 -->
-                <div class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 flex justify-between mb-2">
-                    <span class="text-lg font-semibold">Unterserver 1</span>
-                    <span id="subserver1-uptime" class="text-gray-400">Loading...</span>
-                </div>
-
-                <!-- Unterserver 2 -->
-                <div class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 flex justify-between mb-2">
-                    <span class="text-lg font-semibold">Unterserver 2</span>
-                    <span id="subserver2-uptime" class="text-gray-400">Loading...</span>
-                </div>
-
-                <!-- Unterserver 3 -->
-                <div class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 flex justify-between">
-                    <span class="text-lg font-semibold">Unterserver 3</span>
-                    <span id="subserver3-uptime" class="text-gray-400">Loading...</span>
+            <!-- Anzeige des Hauptservers -->
+            <div class="mb-4">
+                <button id="mainserver-toggle" class="w-full text-left bg-teal-700 p-4 rounded-lg hover:bg-teal-600 focus:outline-none flex justify-between items-center transition-all">
+                    <span class="text-xl font-semibold">Hauptserver</span>
+                    <span id="mainserver-uptime" class="text-xl font-semibold text-gray-200">Loading...</span>
+                    <svg class="w-6 h-6 transform transition-transform duration-300" id="mainserver-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div id="mainserver-info" class="hidden mt-4">
+                    <!-- Unterserver 1 -->
+                    <div class="w-full bg-gray-700 p-4 rounded-lg hover:bg-gray-600 flex justify-between mb-3">
+                        <span class="text-lg font-semibold">Unterserver 1</span>
+                        <span id="subserver1-uptime" class="text-gray-300">Loading...</span>
+                    </div>
+                    <!-- Unterserver 2 -->
+                    <div class="w-full bg-gray-700 p-4 rounded-lg hover:bg-gray-600 flex justify-between mb-3">
+                        <span class="text-lg font-semibold">Unterserver 2</span>
+                        <span id="subserver2-uptime" class="text-gray-300">Loading...</span>
+                    </div>
+                    <!-- Unterserver 3 -->
+                    <div class="w-full bg-gray-700 p-4 rounded-lg hover:bg-gray-600 flex justify-between">
+                        <span class="text-lg font-semibold">Unterserver 3</span>
+                        <span id="subserver3-uptime" class="text-gray-300">Loading...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,19 +46,24 @@
 
     <script>
         // Funktion zum Umschalten der Sichtbarkeit
-        function toggleVisibility(elementId) {
+        function toggleVisibility(elementId, iconId) {
             const element = document.getElementById(elementId);
+            const icon = document.getElementById(iconId);
             const isVisible = !element.classList.contains('hidden');
+
+            // Toggle-Sichtbarkeit
             if (isVisible) {
                 element.classList.add('hidden');
+                icon.classList.remove('rotate-180');
             } else {
                 element.classList.remove('hidden');
+                icon.classList.add('rotate-180');
             }
         }
 
         // Event Listener für das Umschalten der Hauptserver-Info
         document.getElementById('mainserver-toggle').addEventListener('click', () => {
-            toggleVisibility('mainserver-info');
+            toggleVisibility('mainserver-info', 'mainserver-icon');
         });
 
         // Uptime-Daten holen
@@ -101,7 +107,6 @@
 
             } catch (error) {
                 console.error('Error fetching uptime:', error);
-                document.getElementById('uptime').textContent = 'Error fetching data';
                 document.getElementById('mainserver-uptime').textContent = 'Error';
                 document.getElementById('subserver1-uptime').textContent = 'Error';
                 document.getElementById('subserver2-uptime').textContent = 'Error';
@@ -112,6 +117,6 @@
         // Hole die Uptime-Daten beim Laden der Seite
         fetchUptime();
     </script>
+
 </body>
 </html>
-
