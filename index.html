@@ -18,33 +18,48 @@
             <p class="text-gray-400">Details zum Hauptserver hier...</p>
         </div>
 
-        <!-- Unterserver -->
+        <!-- Unterserver 1 -->
         <div class="space-y-4">
-            <div>
-                <button id="subserver1-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none">
-                    Unterserver 1
+            <div class="flex items-center justify-between">
+                <button id="subserver1-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex items-center">
+                    <span>Unterserver 1</span>
+                    <svg id="subserver1-arrow" class="ml-2 h-4 w-4 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
                 </button>
-                <div id="subserver1-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                    <p class="text-gray-400">Details zu Unterserver 1...</p>
-                </div>
             </div>
-
-            <div>
-                <button id="subserver2-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none">
-                    Unterserver 2
-                </button>
-                <div id="subserver2-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                    <p class="text-gray-400">Details zu Unterserver 2...</p>
-                </div>
+            <div id="subserver1-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
+                <p class="text-gray-400">Details zu Unterserver 1...</p>
             </div>
+        </div>
 
-            <div>
-                <button id="subserver3-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none">
-                    Unterserver 3
+        <!-- Unterserver 2 -->
+        <div>
+            <div class="flex items-center justify-between">
+                <button id="subserver2-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex items-center">
+                    <span>Unterserver 2</span>
+                    <svg id="subserver2-arrow" class="ml-2 h-4 w-4 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
                 </button>
-                <div id="subserver3-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
-                    <p class="text-gray-400">Details zu Unterserver 3...</p>
-                </div>
+            </div>
+            <div id="subserver2-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
+                <p class="text-gray-400">Details zu Unterserver 2...</p>
+            </div>
+        </div>
+
+        <!-- Unterserver 3 -->
+        <div>
+            <div class="flex items-center justify-between">
+                <button id="subserver3-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none flex items-center">
+                    <span>Unterserver 3</span>
+                    <svg id="subserver3-arrow" class="ml-2 h-4 w-4 transform transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="subserver3-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
+                <p class="text-gray-400">Details zu Unterserver 3...</p>
             </div>
         </div>
     </div>
@@ -87,22 +102,7 @@
         // Hole die Uptime-Daten beim Laden der Seite
         fetchUptime();
 
-        // Funktion zum Umschalten der Sichtbarkeit von Unterserver-Infos
-        function toggleSubserverInfo(subserverId) {
+        // Funktion zum Umschalten der Sichtbarkeit von Unterserver-Infos und Pfeilrichtung
+        function toggleSubserverInfo(subserverId, arrowId) {
             const infoDiv = document.getElementById(subserverId);
-            infoDiv.classList.toggle('hidden');
-        }
-
-        // Event Listener für das Umschalten der Unterserver-Info
-        document.getElementById('subserver1-toggle').addEventListener('click', function() {
-            toggleSubserverInfo('subserver1-info');
-        });
-        document.getElementById('subserver2-toggle').addEventListener('click', function() {
-            toggleSubserverInfo('subserver2-info');
-        });
-        document.getElementById('subserver3-toggle').addEventListener('click', function() {
-            toggleSubserverInfo('subserver3-info');
-        });
-    </script>
-</body>
-</html>
+            const arrow 
