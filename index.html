@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,46 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-900 text-white">
-    <div class="text-center bg-gray-800 p-6 rounded-lg shadow-lg">
+    <div class="text-center bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
         <h1 class="text-2xl font-bold mb-4">Website/Minecraft Server Uptime</h1>
         <div id="uptime" class="text-4xl font-extrabold mb-4">Loading...</div>
-        <p class="text-gray-400">Uptime for the last 30 days</p>
+        <p class="text-gray-400 mb-6">Uptime for the last 30 days</p>
+
+        <!-- Hauptserver Info -->
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold">Hauptserver</h2>
+            <p class="text-gray-400">Details zum Hauptserver hier...</p>
+        </div>
+
+        <!-- Unterserver -->
+        <div class="space-y-4">
+            <div>
+                <button id="subserver1-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none">
+                    Unterserver 1
+                </button>
+                <div id="subserver1-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
+                    <p class="text-gray-400">Details zu Unterserver 1...</p>
+                </div>
+            </div>
+
+            <div>
+                <button id="subserver2-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none">
+                    Unterserver 2
+                </button>
+                <div id="subserver2-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
+                    <p class="text-gray-400">Details zu Unterserver 2...</p>
+                </div>
+            </div>
+
+            <div>
+                <button id="subserver3-toggle" class="w-full text-left bg-gray-700 p-3 rounded hover:bg-gray-600 focus:outline-none">
+                    Unterserver 3
+                </button>
+                <div id="subserver3-info" class="mt-2 bg-gray-800 p-4 rounded-lg hidden">
+                    <p class="text-gray-400">Details zu Unterserver 3...</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -30,7 +66,6 @@
                         logs: 1,                   // Logs einschalten
                         all_time_uptime_ratio: 1   // Gesamte Uptime anzeigen
                     })
-
                 });
 
                 if (!response.ok) {
@@ -51,6 +86,23 @@
 
         // Hole die Uptime-Daten beim Laden der Seite
         fetchUptime();
+
+        // Funktion zum Umschalten der Sichtbarkeit von Unterserver-Infos
+        function toggleSubserverInfo(subserverId) {
+            const infoDiv = document.getElementById(subserverId);
+            infoDiv.classList.toggle('hidden');
+        }
+
+        // Event Listener für das Umschalten der Unterserver-Info
+        document.getElementById('subserver1-toggle').addEventListener('click', function() {
+            toggleSubserverInfo('subserver1-info');
+        });
+        document.getElementById('subserver2-toggle').addEventListener('click', function() {
+            toggleSubserverInfo('subserver2-info');
+        });
+        document.getElementById('subserver3-toggle').addEventListener('click', function() {
+            toggleSubserverInfo('subserver3-info');
+        });
     </script>
 </body>
 </html>
