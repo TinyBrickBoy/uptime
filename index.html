@@ -39,6 +39,11 @@
                         <span class="text-lg font-semibold">US Central Proxy</span>
                         <span id="subserver3-uptime" class="text-gray-300">Loading...</span>
                     </div>
+                    <!-- Unterserver 4 -->
+                    <div class="w-full bg-gray-700 p-4 rounded-lg hover:bg-gray-600 flex justify-between">
+                        <span class="text-lg font-semibold">FI Proxy</span>
+                        <span id="subserver4-uptime" class="text-gray-300">Loading...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,10 +105,12 @@
                 const subserver1 = data.monitors[1] || {};
                 const subserver2 = data.monitors[2] || {};
                 const subserver3 = data.monitors[3] || {};
+                const subserver4 = data.monitors[4] || {};
 
                 document.getElementById('subserver1-uptime').textContent = `${subserver1.custom_uptime_ratio || 'N/A'}%`;
                 document.getElementById('subserver2-uptime').textContent = `${subserver2.custom_uptime_ratio || 'N/A'}%`;
                 document.getElementById('subserver3-uptime').textContent = `${subserver3.custom_uptime_ratio || 'N/A'}%`;
+                document.getElementById('subserver4-uptime').textContent = `${subserver4.custom_uptime_ratio || 'N/A'}%`;
 
             } catch (error) {
                 console.error('Error fetching uptime:', error);
@@ -111,6 +118,7 @@
                 document.getElementById('subserver1-uptime').textContent = 'Error';
                 document.getElementById('subserver2-uptime').textContent = 'Error';
                 document.getElementById('subserver3-uptime').textContent = 'Error';
+                document.getElementById('subserver4-uptime').textContent = 'Error';
             }
         }
 
