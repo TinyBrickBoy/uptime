@@ -5,9 +5,9 @@
         "update_url": "https:\/\/github.com\/pelican-dev\/panel\/raw\/main\/database\/Seeders\/eggs\/minecraft\/egg-paper.json"
     },
     "exported_at": "2025-02-07T12:15:30+00:00",
-    "name": "Paper",
+    "name": "otp",
     "author": "tbb@onthepixel.net",
-    "uuid": "5da37ef6-58da-4169-90a6-e683e1721247",
+    "uuid": "cb676e10-7315-407e-a8e8-380e0e61dd25",
     "description": "High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies.",
     "features": [
         "eula",
